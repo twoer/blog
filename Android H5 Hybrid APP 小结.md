@@ -57,7 +57,7 @@ Vue + VueRouter + Vuex + Sass + Axios + Mint UI + Better-Scroll
 比如转账页面 输入 `转账金额、收款账号` 后，再选择 `收款银行`，点击 下一步 到 输入密码页面时，再返回到上一个页面，多个页面切换后需要做数据缓存，这里是使用的 `Vuex` 作为状态管理，同一个交易内多个页面 在 `Router Meta` 中配置为同一个 `Group`，公共选择页面配置为 `Selector Group`，当页面在同一个 `Group 或 Selector Group` 内跳转时，保存数据到 `Vuex`，离开 `Group` 就清除 `Vuex`。
 
 ##### 何时 history back，何时是 close webview
-现有项目中部分模块是打开新的 `Webview`，小模块在该 `Webview` 内跳转，某些页面可能有 `返回`按钮，当点击 `返回`时较难处理这个按钮是需要做 `histroy back` 还是 `clsoe webview`，这边写了公共的 `back` 组件，当执行 `back` 时，增加一个定时处理，如果 100ms 内没有执行到组件的`destroyed `，说明无法执行 `history back`，那么就调用 `close webview`，如果 `destroyed ` 执行成功就清空定时并继续执行  `history back`。
+现有项目中部分模块是打开新的 `Webview`，小模块在该 `Webview` 内跳转，某些页面可能有 `返回`按钮，当点击 `返回`时较难处理这个按钮是需要做 `history back` 还是 `close webview`，这边写了公共的 `back` 组件，当执行 `back` 时，增加一个定时处理，如果 100ms 内没有执行到组件的`destroyed `，说明无法执行 `history back`，那么就调用 `close webview`，如果 `destroyed ` 执行成功就清空定时并继续执行  `history back`。
 
 
 
